@@ -1,6 +1,10 @@
 class Calculator
   def self.add(numbers)
     return 0 if numbers.empty? || numbers.nil?
-    numbers.split(",").map(&:to_i).sum
+    delimeter = ","
+    if numbers.lines.first.match(/^\/\/(.+)/)
+      delimeter = $1
+    end
+    numbers.gsub("\n", delimeter).split(delimeter).map(&:to_i).sum
   end
 end
