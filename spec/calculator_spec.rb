@@ -17,11 +17,19 @@ RSpec.describe Calculator do
 
   context "when delimeter is provided in the first line of the string" do
     it "should separate the numbers with given delimeter and return the sum" do
-      expect(Calculator.add("//;\n1;2")).to eq(3)
+      expect(Calculator.add("//[;]\n1;2")).to eq(3)
+    end
+
+    it "should handle more than 1 char delimeter as well" do
+      expect(Calculator.add("//[***]\n1***2***3")).to eq(6)
     end
   end
 
   it "should throw an expection if negative numbers provided" do
     expect { Calculator.add("-1,4,5") }.to raise_error(/negatives not allowed - -1/)
+  end
+
+  it "should ignore numbers bigger then 1000" do
+    expect(Calculator.add("1\n2000,3")).to eq(4)
   end
 end
