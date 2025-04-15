@@ -5,6 +5,9 @@ class Calculator
     if numbers.lines.first.match(/^\/\/(.+)/)
       delimeter = $1
     end
-    numbers.gsub("\n", delimeter).split(delimeter).map(&:to_i).sum
+    posi, neg = numbers.gsub("\n", delimeter).split(delimeter).map(&:to_i).partition {|n| n >= 0 }
+    
+    raise "negatives not allowed - #{neg.join(",")}" unless neg.empty?
+    posi.sum
   end
 end

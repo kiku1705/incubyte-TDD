@@ -20,4 +20,8 @@ RSpec.describe Calculator do
       expect(Calculator.add("//;\n1;2")).to eq(3)
     end
   end
+
+  it "should throw an expection if negative numbers provided" do
+    expect { Calculator.add("-1,4,5") }.to raise_error(/negatives not allowed - -1/)
+  end
 end
