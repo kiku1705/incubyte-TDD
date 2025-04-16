@@ -9,6 +9,8 @@ RSpec.describe Calculator do
   it "should return sum of comma separated numbers" do
     expect(Calculator.add("1")).to eq(1)
     expect(Calculator.add("1,5")).to eq(6)
+    expect(Calculator.add("1,,5")).to eq(6)
+    expect(Calculator.add(' 1 , 2 , 3 ')).to eq(6)
   end
 
   it "should handle numbers with newline and return sum" do
@@ -23,10 +25,14 @@ RSpec.describe Calculator do
     it "should handle more than 1 char delimeter as well" do
       expect(Calculator.add("//[***]\n1***2***3")).to eq(6)
     end
+
+    it "should handle multiple delimeters" do
+      expect(Calculator.add("//[*][%][$]\n1*2$4%5")).to eq(12)
+    end
   end
 
   it "should throw an expection if negative numbers provided" do
-    expect { Calculator.add("-1,4,5") }.to raise_error(/negatives not allowed - -1/)
+    expect { Calculator.add("-1,4,5,-7,-9") }.to raise_error(/negatives not allowed - -1,-7,-9/)
   end
 
   it "should ignore numbers bigger then 1000" do
