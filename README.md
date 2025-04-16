@@ -1,5 +1,10 @@
 ## String Calculator
 
+A simple string-based calculator with a single method:
+```
+int Add(string numbers)
+```
+
 Features
 ✅ Basic Usage
 Accepts up to two numbers separated by commas.
