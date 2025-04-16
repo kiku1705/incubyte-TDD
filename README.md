@@ -36,7 +36,7 @@ Example: "//;\n1;2" → returns 3
 ✅ Negative Numbers
 Throws an exception if any negative numbers are present.
 
-Exception message: "negatives not allowed: -1, -3"
+Exception message: "negatives not allowed: -1,-3"
 
 Example: "1,-1,3,-3" → throws with message
 
@@ -54,8 +54,3 @@ Example: "//[***]\n1***2***3" → returns 6
 Supports multiple custom delimiters:
 
 Example: "//[*][%]\n1*2%3" → returns 6
-
-✅ Multiple Long Delimiters
-Delimiters can be of any length and quantity:
-
-Example: "//[**][%%][###]\n1**2%%3###4" → returns 10
